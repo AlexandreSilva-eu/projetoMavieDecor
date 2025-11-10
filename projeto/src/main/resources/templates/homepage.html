@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mavie Decor - Homepage</title>
+    <link rel="stylesheet" th:href="@{/css/mavie.css}">
+</head>
+<body>
+<header>
+    <img src="/img/logo-mavie.jpeg" alt="Mavie Decor Logo">
+</header>
+
+<div class="container">
+    <h1>Escolha por categoria</h1>
+
+    <div class="home-grid">
+        <div class="home-thumb">
+            <img th:if="${temaInfantil != null}" th:src="${temaInfantil.thumbnailPath}" alt="Tema Infantil">
+            <div class="home-label">infantil</div>
+        </div>
+
+        <div class="home-thumb">
+            <img th:if="${temaAdulto != null}" th:src="${temaAdulto.thumbnailPath}" alt="Tema Adulto">
+            <div class="home-label">adulto</div>
+        </div>
+
+        <div class="home-thumb">
+            <img th:if="${temaMesversario != null}" th:src="${temaMesversario.thumbnailPath}" alt="Tema Mesversário">
+            <div class="home-label">mesversário</div>
+        </div>
+    </div>
+
+    <div style="margin-top:24px;">
+        <a class="btn" th:href="@{/temas}">Ver todos os temas</a>
+        <a class="btn" th:href="@{/clientes/novo}">Cadastre-se</a>
+    </div>
+</div>
+</body>
+</html>

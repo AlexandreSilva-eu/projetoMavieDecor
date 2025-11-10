@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mavie Decor - Locação de Decorações</title>
+    <link rel="stylesheet" th:href="@{/css/mavie.css}">
+</head>
+<body>
+<header>
+    <img src="/img/logo-mavie.jpeg" alt="Mavie Decor Logo">
+</header>
+
+<div class="container">
+    <h1>Bem-vindo à Mavie Decor</h1>
+    <p>Locação de decorações de festas com estilo, elegância e praticidade.</p>
+
+    <div>
+        <a class="btn" th:href="@{/clientes/novo}">Cadastre-se</a>
+        <a class="btn" th:href="@{/homepage}">Ir para Homepage</a>
+    </div>
+</div>
+</body>
+</html>
