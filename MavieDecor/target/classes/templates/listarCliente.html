@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>
+            LISTAR CLIENTES
+        </title>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NOME</th>
+                    <th>CPF</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="cli : ${clientes}">
+                    <td th:text="${cli.id}"></td>
+                    <td th:text="${cli.nome}"></td>
+                    <td th:text="${cli.cpf}"></td>
+                    <td><a th:href="@{'/upd/cliente/' + ${cli.id}}">Editar</a></td>
+                    <td><form th:action="@{'/del/cliente/' + ${cli.id}}" method="post">
+                        <input type="submit" value="Deletar">
+                    </form></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
