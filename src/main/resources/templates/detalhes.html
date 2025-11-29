@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes do Cliente</title>
+    <link rel="stylesheet" th:href="@{/css/mavie.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Detalhes</h1>
+    <dl>
+        <dt>Id</dt><dd th:text="${cliente.id}">1</dd>
+        <dt>Nome</dt><dd th:text="${cliente.nome}">Nome</dd>
+        <dt>Email</dt><dd th:text="${cliente.email}">email</dd>
+        <dt>Telefone</dt><dd th:text="${cliente.telefone}">telefone</dd>
+    </dl>
+    <a class="btn" th:href="@{/clientes}">Voltar</a>
+</div>
+</body>
+</html>
