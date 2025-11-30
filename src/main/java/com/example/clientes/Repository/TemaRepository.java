@@ -20,21 +20,9 @@ public class TemaRepository {
 
     @PostConstruct
     public void init() {
-        try {
-        } catch (Exception e) {
-            System.err.println("ERRO no init de TemaRepository: " + e.getClass().getName() + " - " + e.getMessage());
-            e.printStackTrace();
-            throw e;
-        }
-    }
-
-    /*
-    @PostConstruct
-    public void init() {
         jdbc = new JdbcTemplate(dataSource);
         popularTemas();
     }
-*/
     public List<Tema> findAll() {
         String sql = "SELECT * FROM tema";
         List<Map<String, Object>> rows = jdbc.queryForList(sql);
