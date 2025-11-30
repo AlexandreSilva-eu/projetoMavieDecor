@@ -21,7 +21,7 @@ public class TemaRepository {
     @PostConstruct
     public void init() {
         jdbc = new JdbcTemplate(dataSource);
-//        popularTemas();
+        popularTemas();
     }
 
     public List<Tema> findAll() {
@@ -57,7 +57,7 @@ public class TemaRepository {
         }
         return categorias;
     }
-/*
+
     private void popularTemas() {
         Integer count = jdbc.queryForObject("SELECT COUNT(*) FROM tema", Integer.class);
         if (count != null && count > 0) return;
@@ -81,5 +81,5 @@ public class TemaRepository {
             Integer categoriaId = jdbc.queryForObject("SELECT id FROM categoria_tema WHERE nome = ?", Integer.class, categoria.name());
             jdbc.update("INSERT INTO tema_categoria (tema_id, categoria_id) VALUES (?, ?)", temaId, categoriaId);
         }
-    }*/
+    }
 }
