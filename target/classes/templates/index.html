@@ -1,18 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>
-            SISTEMA DE CADASTRO DE CLIENTES
-        </title>
-    </head>
-    <body>
-        <h1>
-            SISTEMA DE CADASTRO DE CLIENTES
-        </h1>
-        <ul>
-            <li><a th:href="@{/cliente}">CADASTRO DE CLIENTE</a></li>
-            <li><a th:href="@{/listar}">LISTAGEM DE CLIENTES</a></li>
-            <li></li>
-        </ul>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Clientes</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Clientes</h1>
+    <a class="btn" th:href="@{/clientes/novo}">Novo Cliente</a>
+    <table>
+        <thead>
+        <tr><th>Id</th><th>Nome</th><th>Email</th><th>Telefone</th><th>Ações</th></tr>
+        </thead>
+        <tbody>
+        <tr th:each="c : ${clientes}">
+            <td th:text="${c.id}">1</td>
+            <td th:text="${c.nome}">Nome</td>
+            <td th:text="${c.email}">email@ex.com</td>
+            <td th:text="${c.telefone}">123</td>
+            <td>
+                <a th:href="@{|/clientes/detalhes/${c.id}|}">Ver</a> |
+                <a th:href="@{|/clientes/editar/${c.id}|}">Editar</a> |
+                <form th:action="@{|/clientes/excluir/${c.id}|}" method="post" style="display:inline">
+                    <button type="submit" class="link-button">Excluir</button>
+                </form>
+            </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(clientes)}">
+            <td colspan="5">Nenhum cliente cadastrado</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
 </html>
