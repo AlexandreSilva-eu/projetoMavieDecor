@@ -21,8 +21,9 @@ public class TemaRepository {
     @PostConstruct
     public void init() {
         jdbc = new JdbcTemplate(dataSource);
-        //popularTemas();
+        popularTemas();
     }
+
     public List<Tema> findAll() {
         String sql = "SELECT * FROM tema";
         List<Map<String, Object>> rows = jdbc.queryForList(sql);
@@ -51,12 +52,12 @@ public class TemaRepository {
             try {
                 categorias.add(CategoriaTema.valueOf(nome));
             } catch (IllegalArgumentException e) {
-
+                // ignora categorias inválidas
             }
         }
         return categorias;
     }
-/*
+
     private void popularTemas() {
         Integer count = jdbc.queryForObject("SELECT COUNT(*) FROM tema", Integer.class);
         if (count != null && count > 0) return;
@@ -71,7 +72,7 @@ public class TemaRepository {
         inserirTema("Festa Palmeiras", "/img/temas/aPalmeiras.jpeg", List.of(CategoriaTema.ADULTO, CategoriaTema.MASCULINO));
         inserirTema("Mesversário Astronauta", "/img/temas/mAstronauta.jpeg", List.of(CategoriaTema.MESVERSARIO, CategoriaTema.MASCULINO, CategoriaTema.FEMININO));
     }
-*/
+
     private void inserirTema(String nome, String thumbnail, List<CategoriaTema> categorias) {
         jdbc.update("INSERT INTO tema (nome_tema, thumbnail_path) VALUES (?, ?)", nome, thumbnail);
         Integer temaId = jdbc.queryForObject("SELECT id FROM tema WHERE nome_tema = ?", Integer.class, nome);

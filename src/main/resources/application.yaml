@@ -1,15 +1,14 @@
 server: 
-    port: 5432
+    port: 8080
 
 spring:
-    datasource:
-        url: dpg-d4dqaejuibrs739vfbng-a.oregon-postgres.render.com/aula_y4qy
-        username: aula_y4qy_user
-        password: t5m9rbKLBVd35RSo9BXgFqzTMJ7Pp3ga
-        driver-class-name: org.postgresql.Driver
-        schema: classpath:schema-postgresql.sql
-        initialization-mode: always
-        
+  datasource:
+    url: jdbc:postgresql://dpg-d4dqaejuibrs739vfbng-a.oregon-postgres.render.com:5432/aula_y4qy?sslmode=require
+    username: aula_y4qy_user
+    password: t5m9rbKLBVd35RSo9BXgFqzTMJ7Pp3ga
+    driver-class-name: org.postgresql.Driver
+
+
     sql:
         init:
             schema-locations: classpath:/schema-postgresql.sql
