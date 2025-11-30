@@ -3,9 +3,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://dpg-d4dqaejuibrs739vfbng-a.oregon-postgres.render.com:5432/aula_y4qy
-    username: aula_y4qy_user
-    password: t5m9rbKLBVd35RSo9BXgFqzTMJ7Pp3ga
+    url: ${DATABASE_URL_RENDER}
+    password: ${DB_PASSWORD}
+    username: ${DB_USERNAME}
     driver-class-name: org.postgresql.Driver
     initialize: true
 
