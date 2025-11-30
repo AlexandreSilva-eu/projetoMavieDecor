@@ -12,6 +12,10 @@ header {
   padding: 20px;
 }
 
+img {
+ width: 250px;
+}
+
 header img {
   max-width: 500px;
 }
