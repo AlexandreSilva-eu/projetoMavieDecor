@@ -43,10 +43,6 @@ public class ClienteService {
         repository.deleteById(id);
     }
 
-    /**
-     * Tenta criar o cliente somente se não existir outro com o mesmo email.
-     * Retorna Optional contendo o cliente salvo em caso de sucesso, ou Optional.empty() caso já exista.
-     */
     public Optional<Cliente> criarSeNaoExistir(Cliente cliente) {
         Optional<Cliente> existente = repository.findByEmail(cliente.getEmail());
         if (existente.isPresent()) {

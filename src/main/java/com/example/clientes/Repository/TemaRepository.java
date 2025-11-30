@@ -52,7 +52,7 @@ public class TemaRepository {
             try {
                 categorias.add(CategoriaTema.valueOf(nome));
             } catch (IllegalArgumentException e) {
-                // ignora categorias inválidas
+
             }
         }
         return categorias;
@@ -62,12 +62,12 @@ public class TemaRepository {
         Integer count = jdbc.queryForObject("SELECT COUNT(*) FROM tema", Integer.class);
         if (count != null && count > 0) return;
 
-        // Inserir categorias fixas
+
         for (CategoriaTema categoria : CategoriaTema.values()) {
             jdbc.update("INSERT INTO categoria_tema (nome) VALUES (?) ON CONFLICT (nome) DO NOTHING", categoria.name());
         }
 
-        // Inserir temas fixos
+
         inserirTema("Festa Princesas", "/img/temas/iPrincesas.jpeg", List.of(CategoriaTema.INFANTIL, CategoriaTema.FEMININO));
         inserirTema("Festa Palmeiras", "/img/temas/aPalmeiras.jpeg", List.of(CategoriaTema.ADULTO, CategoriaTema.MASCULINO));
         inserirTema("Mesversário Astronauta", "/img/temas/mAstronauta.jpeg", List.of(CategoriaTema.MESVERSARIO, CategoriaTema.MASCULINO, CategoriaTema.FEMININO));

@@ -52,7 +52,6 @@ public class ClienteController {
         return "result";
     }
 
-    // redireciona raiz /clientes para novo
     @GetMapping
     public String root() {
         return "redirect:/clientes/novo";
